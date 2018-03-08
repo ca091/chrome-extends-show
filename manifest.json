@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "我的扩展程序",
+  "description": "This extension demonstrates a browser action with kittens.",
+  "version": "1.0",
+
+  "background": {
+    "scripts": [
+      "background/background.js",
+      "background/utils.js"
+    ],
+    "persistent": false
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "popup.html"
+  }
+}
