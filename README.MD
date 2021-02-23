@@ -8,3 +8,9 @@
 
 
 - background: 后台网页（js需要在manifest注册，按顺序加载）
+
+# todo
+
+1. JSON.parse
+
+2. fetch interceptor
