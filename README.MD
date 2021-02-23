@@ -6,11 +6,26 @@
 [扩展程序基础](https://crxdoc-zh.appspot.com/extensions/getstarted)
 [扩展程序开发](https://crxdoc-zh.appspot.com/extensions/overview)
 
+## other article
 
-- background: 后台网页（js需要在manifest注册，按顺序加载）
+- [简书 chrome 插件开发](https://www.jianshu.com/p/157327fd7b23)
+
+## 事件页面：background（js需要在manifest注册，按顺序加载）
+
+## 内容脚本：content_scripts
+
+- 执行环境：隔离，不能访问当前页面创建的任何 JavaScript 变量或函数
+
+- 可以访问所在页面的 DOM
+
+- 使用[消息](https://crxdoc-zh.appspot.com/extensions/messaging)传递信息
 
 # todo
 
 1. JSON.parse
 
 2. fetch interceptor
+
+3. analysis performance
+
+4. analysis performance: list resource (资源清单)

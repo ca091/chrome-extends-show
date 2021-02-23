@@ -13,6 +13,19 @@
     "persistent": false
   },
 
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "js": [
+        "content-script/analysis.js",
+        "content-script/cs1.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+
   "permissions": [
     "activeTab"
   ],
