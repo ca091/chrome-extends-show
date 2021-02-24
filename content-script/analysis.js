@@ -5,14 +5,11 @@ function getPerformance() {
     'script',
   ]
 
-  let resourceList = performance.getEntriesByType('resource').filter(i => filters.includes(i.initiatorType))
-
   let navigationTiming = performance.getEntriesByType('navigation')
 
-  let resourceListMap = resourceList.map(r => ({
-    name: r.name,
-    duration: r.duration
-  }))
+  let resourceListMap = performance.getEntriesByType('resource')
+      .filter(i => filters.includes(i.initiatorType))
+      .map(r => ({name: r.name, duration: r.duration}))
 
   return {
     navigationTiming,

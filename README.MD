@@ -10,7 +10,11 @@
 
 - [简书 chrome 插件开发](https://www.jianshu.com/p/157327fd7b23)
 
+- [developer.chrome extension docs](https://developer.chrome.com/docs/extensions/)
+
 ## 事件页面：background（js需要在manifest注册，按顺序加载）
+
+- 不可以访问 DOM
 
 ## 内容脚本：content_scripts
 
@@ -20,12 +24,18 @@
 
 - 使用[消息](https://crxdoc-zh.appspot.com/extensions/messaging)传递信息
 
+## popup.html
+
+- 点击icon打开弹出层时加载
+
 # todo
 
 1. JSON.parse
 
 2. fetch interceptor
 
-3. analysis performance
+3. analysis performance ✅
 
-4. analysis performance: list resource (资源清单)
+4. analysis performance: list resource (资源清单) ✅
+
+5. [google analytics for tracking customer behavior](https://developer.chrome.com/docs/extensions/mv2/tut_analytics/)
