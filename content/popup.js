@@ -54,7 +54,7 @@ function initEvents() {
         timingList.push(`${key}: ${timing[key]}`)
       }
       for (let r of resourceListMap) {
-        resourceList.push(`<div>name: ${r.name}</div> <div>duration: ${r.duration}</div>`)
+        resourceList.push(`<div>name: ${r.name}</div> <div>duration: ${r.duration}</div> <div>transferSize: ${r.transferSize}</div>`)
       }
       setList(timingList, 'navigationTiming')
       setList(resourceList, 'resourceList')

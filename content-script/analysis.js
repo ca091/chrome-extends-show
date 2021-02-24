@@ -9,7 +9,10 @@ function getPerformance() {
 
   let resourceListMap = performance.getEntriesByType('resource')
       .filter(i => filters.includes(i.initiatorType))
-      .map(r => ({name: r.name, duration: r.duration}))
+      .map(r => ({name: r.name, duration: r.duration, transferSize: (r.transferSize / 1024).toFixed(1)})) // 不分析是否gzip
+      .sort((a, b) => {
+        return a.duration > b.duration ? 1 : -1
+      })
 
   return {
     navigationTiming,
