@@ -6,12 +6,23 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<section id="navigationTiming">
-  <h1>navigationTiming</h1>
+<section>
+  <button id="performance-analysis">performance analysis</button>
+  <div id="navigationTiming">
+    <h1>navigationTiming</h1>
+  </div>
+  <div id="resourceList">
+    <h1>resourceList</h1>
+  </div>
 </section>
 
-<section id="resourceList">
-  <h1>resourceList</h1>
+
+<section>
+  <button id="json-parse-execute">json parse</button>
+  <div>
+    <div id="json-resource" contenteditable="true"></div>
+    <div id="json-result"></div>
+  </div>
 </section>
 
 <script src="content/popup.js"></script>

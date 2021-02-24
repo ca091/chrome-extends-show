@@ -29,21 +29,54 @@ function setList(data, id) {
   document.getElementById(id).appendChild(ul)
 }
 
-// 请求 analysis performance
-sendMessageToContentScript({cmd: 'performance'}, response => {
-  let re = JSON.parse(response)
-  console.log('来自 content 的回复：', re)
-  let { navigationTiming, resourceListMap } = re
-  let timing = navigationTiming[0]
-  delete timing.serverTiming
-  let timingList = []
-  let resourceList = []
-  for (let key of Object.keys(timing)) {
-    timingList.push(`${key}: ${timing[key]}`)
-  }
-  for (let r of resourceListMap) {
-    resourceList.push(`<div>name: ${r.name}</div> <div>duration: ${r.duration}</div>`)
-  }
-  setList(timingList, 'navigationTiming')
-  setList(resourceList, 'resourceList')
-})
+function initEvents() {
+  let performanceAnalysis = document.getElementById('performance-analysis')
+  let jsonParseExecute = document.getElementById('json-parse-execute')
+
+  // let jsonFromClipboard = document.getElementById('json-from-clipboard')
+  // let desktopCapture = document.getElementById('desktop-capture')
+
+  // desktopCapture.addEventListener('click', () => {
+  //   chrome.desktopCapture.chooseDesktopMedia(['screen', 'window', 'tab'], null, (streamId, options) => {})
+  // })
+
+  performanceAnalysis.addEventListener('click', () => {
+    // 请求 analysis performance
+    sendMessageToContentScript({cmd: 'performance'}, response => {
+      let re = JSON.parse(response)
+      console.log('来自 content 的回复：', re)
+      let { navigationTiming, resourceListMap } = re
+      let timing = navigationTiming[0]
+      delete timing.serverTiming
+      let timingList = []
+      let resourceList = []
+      for (let key of Object.keys(timing)) {
+        timingList.push(`${key}: ${timing[key]}`)
+      }
+      for (let r of resourceListMap) {
+        resourceList.push(`<div>name: ${r.name}</div> <div>duration: ${r.duration}</div>`)
+      }
+      setList(timingList, 'navigationTiming')
+      setList(resourceList, 'resourceList')
+    })
+  })
+
+  jsonParseExecute.addEventListener('click', () => {
+    let jsonResource = document.getElementById('json-resource')
+    let jsonResult = document.getElementById('json-result')
+    let text = jsonResource.innerText.trim()
+    if (!text.length) return
+    let result = ''
+    try {
+      result = JSON.stringify(JSON.parse(text), null, 2)
+      jsonResult.innerHTML = ''
+      let pre = document.createElement('pre')
+      pre.innerHTML = result
+      jsonResult.appendChild(pre)
+    } catch (e) {
+      console.warn(e)
+    }
+  })
+}
+
+initEvents()

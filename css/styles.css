@@ -1,4 +1,17 @@
 body {
-  width: 600px;
+  width: 777px;
+  overflow: hidden;
   background-color: aquamarine;
 }
+
+#json-resource{
+  margin-top: 8px;
+  height: 400px;
+  overflow: auto;
+  border: 1px solid beige;
+}
+
+#json-result{
+  margin-top: 8px;
+}
+
